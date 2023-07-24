@@ -269,7 +269,6 @@ body.dark-theme{
 .home__blob {
   position: relative;
   justify-self: center;
-  z-index: var(--z-tooltip);
 }
 
 .home__profile {
@@ -307,7 +306,6 @@ body.dark-theme{
 
 .home__profession {
   transform: translateY(1rem);
-  z-index: -1;
 }
 
 /*=============== ABOUT ===============*/
@@ -524,7 +522,7 @@ body.dark-theme{
   }
 
   .resume__left, resume__right {
-    padding-inline: 1.5rem;
+    padding-inline: 2rem;
   }
 
   .header {
@@ -588,7 +586,6 @@ body.dark-theme{
   .home__profile {
     width: 280px;
     height: 320px;
-    
   }
 
   .home__img {
@@ -609,12 +606,18 @@ body.dark-theme{
   }
 
   .home__profession {
-    transform: translateY(-2rem);
+    /* transform: translateY(-2rem); */
+    padding-bottom: 1rem;
   }
 
   .certificates__container,
   .references__container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .work {
+    margin-inline: 1.5rem;
+    padding-top: 2rem;
   }
 
   .footer__container {
