@@ -100,6 +100,17 @@ body.dark-theme{
   background-color: hsl(40, 20%, 12%);
 }
 
+.dark-theme::-webkit-scrollbar{
+  background-color: hsl(40, 20%, 12%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb{
+  background-color: hsl(40, 20%, 25%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb:hover{
+  background-color: hsl(40, 20%, 35%);
+}
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
   max-width: 1024px;
@@ -166,6 +177,7 @@ body.dark-theme{
   top: 0;
   left: 0;
   z-index: var(--z--fixed);
+  transition: background .4s;
 }
 
 .nav {
@@ -194,6 +206,7 @@ body.dark-theme{
     margin-inline: 1.5rem;
     border-radius: .5rem;
     padding: 1.25rem 3rem;
+    transition: background .4s;
   }
 
 
@@ -250,12 +263,13 @@ body.dark-theme{
 }
 
 .home__name {
-  margin-bottom: .25rem;
+  margin-bottom: 1rem;
 }
 
 .home__blob {
   position: relative;
   justify-self: center;
+  z-index: var(--z-tooltip);
 }
 
 .home__profile {
@@ -277,6 +291,7 @@ body.dark-theme{
   position: absolute;
   width: 50px;
   fill: var(--title-color);
+  transition: fill .4s;
 }
 
 .home__star-1 {
@@ -292,6 +307,7 @@ body.dark-theme{
 
 .home__profession {
   transform: translateY(1rem);
+  z-index: -1;
 }
 
 /*=============== ABOUT ===============*/
@@ -424,7 +440,7 @@ body.dark-theme{
   color: var(--title-color);
   border-radius: .25rem;
   z-index: var(--z-tooltip);
-  transition: bottom .4s, transform .4s;
+  transition: bottom .4s, transform .4s, background .4s;
 }
 
 .scrollup:hover {
@@ -438,9 +454,171 @@ body.dark-theme{
 }
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
+@media screen and (max-width: 350px){
+  .container{
+    margin-inline: 1rem;
+  }
 
+  .navv__menu {
+    padding-inline: 2rem;
+  }
+
+  .home__star-1{
+    left: 0;
+  }
+
+  .home__star-2{
+    right: -.5rem
+  }
+  
+  .skills__content{
+    grid-template-columns: max-content;
+    row-gap: 1rem;
+  }
+
+  .home__blob {
+    z-index: -1;
+  }
+
+  .footer__container {
+    /* grid-template-columns: max-content; */
+    grid-template-columns: repeat(1, max-content);
+    row-gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 535px){
+  .footer__container {
+    grid-template-columns: repeat(1, max-content);
+  }
+}
+@media screen and (min-width: 576px){
+  .nav__menu {
+    width: 320px;
+    margin-inline: auto;
+  }
+
+  .footer__container {
+    grid-template-columns: repeat(3, max-content);
+  }
+
+  .show-scroll{
+    bottom: 3rem;
+  }
+  
+}
+/* For large devices */
+
+@media screen and (min-width: 768px){
+  .section{
+    padding-top: 2.5rem;
+  }
+
+  .section__title {
+    margin: 0 0 2rem;
+  }
+  
+  .resume__main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .resume__left, resume__right {
+    padding-inline: 1.5rem;
+  }
+
+  .header {
+    position: initial;
+  }
+
+  .nav {
+    margin: 0;
+  }
+
+  .nav__menu, .scrollup {
+    display: none;
+  }
+
+  .home {
+    grid-column: 1/3;
+  }
+
+  .home__container {
+    padding-top: 3rem;
+  }
+
+  .footer {
+    padding-block: 2.5rem 2rem;
+  }
+}
 
 /* For medium devices */
 
+@media screen and (min-width: 1024px){
+  body {
+    background-color: var(--body-color);
+    margin-block: 3rem;
+  }
+  
+  .resume {
+    background-color: var(--container-color);
+    box-shadow: 0 0 48px hsla(40, 48%, 12%, .2);
+    margin-inline: auto;
+    transition: background .4s;
+  }
 
-/* For large devices */
+  .resume__main {
+    grid-template-columns: 376px 1fr;
+
+  }
+
+  .dark-theme .resume {
+    box-shadow: 0 0 48px hsla(40, 48%, 4%, .4);
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+    margin-inline: 1.5rem;
+  }
+
+  .home__name {
+    margin-bottom: .5rem;
+  }
+
+  .home__profile {
+    width: 280px;
+    height: 320px;
+    
+  }
+
+  .home__img {
+    width: 245px;
+  }
+
+  .home__star-1, .home__star-2 {
+    width: 70px;
+  }
+
+  .home__star-1{
+    left: -10rem;
+  }
+
+  .home__star-2{
+    right: -8.5rem;
+    bottom: 2rem;
+  }
+
+  .home__profession {
+    transform: translateY(-2rem);
+  }
+
+  .certificates__container,
+  .references__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__container {
+    margin-inline: 1.5rem;
+    padding-top: 2rem;
+  }
+}
